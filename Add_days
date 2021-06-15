@@ -1,0 +1,148 @@
+function trocar(){
+    var data = document.querySelector("#inpvencimento").value;
+    var split = data.split("/");
+    var date = new Date(`${split[1]}/${split[0]}/${split[2]}`);
+	
+    if(split[1] == 2){	
+    	if(Number(split[2]) % 4 == 0 && Number(split[2]) % 100 != 0 || Number(split[2]) % 400 == 0){
+          var dia = Number(split[0]) + 10;
+          if(dia > 29){
+              if(dia == 39){
+                  var dia = 10
+              }else{
+                var dia = `0${dia - 29}`;
+              }
+              var mes = Number(split[1]) + 1;
+              if(mes < 10){
+                  var mes = `0${mes}`
+              }
+                  var ano = split[2];
+          }else{
+              var dia = dia;
+              var mes = Number(split[1]);
+              if(mes < 10){
+                  var mes = `0${mes}`
+              }
+              var ano = split[2];
+          }
+        }else{
+          var dia = Number(split[0]) + 10;
+          if(dia > 28){
+              if(dia == 38){
+                  var dia = 10
+              }else{
+                var dia = `0${dia - 28}`;
+              }
+              var mes = Number(split[1]) + 1;
+              if(mes < 10){
+                  var mes = `0${mes}`
+              }
+                  var ano = split[2];
+          }else{
+              var dia = dia;
+              var mes = Number(split[1]);
+              if(mes < 10){
+                  var mes = `0${mes}`
+              }
+              var ano = split[2];
+          }
+        }
+    }else if(split[1] % 2 == 0 && split[1] < 7){
+		var dia = Number(split[0]) + 10;
+		if(dia > 30){
+			if(dia == 40){
+				var dia = 10
+            }else{
+              var dia = `0${dia - 30}`;
+            }
+			var mes = Number(split[1]) + 1;
+			if(mes < 10){
+            	var mes = `0${mes}`
+            }
+            	var ano = split[2];
+        }else{
+			var dia = dia;
+			var mes = Number(split[1]);
+			if(mes < 10){
+            	var mes = `0${mes}`
+            }
+			var ano = split[2];
+		}
+   	}else if(split[1] % 2 == 1 && split[1] <= 7){
+		var dia = Number(split[0]) + 10;
+		if(dia > 31){
+			if(dia == 41){
+				var dia = 10
+            }else{
+              var dia = `0${dia - 31}`;
+            }
+			var mes = Number(split[1]) + 1;
+			if(mes < 10){
+            	var mes = `0${mes}`
+            }
+            var ano = split[2];
+        }else{
+			var dia = dia;
+			var mes = Number(split[1]);
+			if(mes < 10){
+            	var mes = `0${mes}`
+            }
+			var ano = split[2];
+		}
+	}else if(split[1] % 2 == 0 && split[1] >= 8){
+		var dia = Number(split[0]) + 10;
+		if(dia > 30){
+			if(dia == 41){
+				var dia = 10
+            }else{
+              var dia = `0${dia - 30}`;
+            }
+			var mes = Number(split[1]) + 1;
+			if(mes < 10){
+            	var mes = `0${mes}`
+            }
+			if(mes > 12){
+            	var ano = Number(split[2]) + 1;
+				var mes = "01";
+            }else{
+            	var ano = split[2];
+            }
+        }else{
+			var dia = dia;
+			var mes = Number(split[1]);
+			if(mes < 10){
+            	var mes = `0${mes}`
+            }
+			var ano = split[2];
+		}
+	}else if(split[1] % 2 == 1 && split[1] >= 9){
+		var dia = Number(split[0]) + 10;
+		if(dia > 31){
+			if(dia == 41){
+				var dia = 10
+            }else{
+              var dia = `0${dia - 31}`;
+            }
+			var mes = Number(split[1]) + 1;
+			if(mes < 10){
+            	var mes = `0${mes}`
+            }
+			if(mes > 12){
+            	var ano = Number(split[2]) + 1;
+				var mes = "01";
+            }else{
+            	var ano = split[2];
+            }
+        }else{
+			var dia = dia;
+			var mes = Number(split[1]);
+			if(mes < 10){
+            	var mes = `0${mes}`
+            }
+			var ano = split[2];
+		}
+    }
+    var final = `${dia}/${mes}/${ano}`;
+    document.querySelector("#inpprximaEmisso").value = final;
+	document.querySelector("#inpprximaEmisso").innerHTML = final;
+  }
